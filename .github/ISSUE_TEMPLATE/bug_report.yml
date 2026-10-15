@@ -1,0 +1,32 @@
+name: 错误报告
+description: 报告插件加载、计数、配置或拦截问题。
+title: "[Bug] "
+labels: []
+body:
+  - type: input
+    id: versions
+    attributes:
+      label: 版本信息
+      description: 插件、AstrBot、Python 的版本与操作系统。
+    validations:
+      required: true
+  - type: input
+    id: platform
+    attributes:
+      label: 平台和执行器
+      description: 例如 Telegram + AstrBot 内置执行器。
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: 复现步骤与实际结果
+      description: 描述操作步骤、期望结果与实际结果。
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: 脱敏日志或配置
+      description: 请移除令牌、实际用户 ID、聊天内容和用量数据。
+      render: text

@@ -1,0 +1,17 @@
+{
+  "enable": true,
+  "default_weekly_limit": 200,
+  "default_5h_limit": 30,
+  "whitelist": [
+    "telegram:10001"
+  ],
+  "custom_limits": "{\"telegram:10002\":300,\"qq_bot:10002\":100}",
+  "custom_5h_limits": "{\"telegram:10002\":50,\"qq_bot:10002\":20}",
+  "telegram_platform_ids": [],
+  "legacy_platform_id": "",
+  "enable_50_notice": true,
+  "enable_90_notice": true,
+  "enable_100_notice": true,
+  "exhausted_msg": "{period}额度已用尽（{used}/{limit} 次），预计可再次使用：{reset_time}。",
+  "reset_all_usage": false
+}

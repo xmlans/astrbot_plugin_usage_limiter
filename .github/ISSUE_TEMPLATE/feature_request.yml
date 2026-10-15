@@ -1,0 +1,11 @@
+name: 功能建议
+description: 提出具体的使用需求。
+title: "[Feature] "
+body:
+  - type: textarea
+    id: use_case
+    attributes:
+      label: 使用场景与期望行为
+      description: 描述遇到的问题，以及希望插件如何帮助解决。
+    validations:
+      required: true

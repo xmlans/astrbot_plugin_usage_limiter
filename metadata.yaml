@@ -1,0 +1,22 @@
+name: astrbot_plugin_usage_limiter
+display_name: 双周期对话额度
+short_desc: 5 小时与每周双额度，Telegram 用户跨 Bot 共享，支持查询、提醒及配置页全量重置
+desc: |
+  # AstrBot 用户用量控制插件 (Usage Limiter)
+
+  基于 5 小时窗口与自然周的大语言模型（LLM）对话次数控制插件。
+  - 默认每 5 小时 30 次、每周 200 次，任一周期额度用尽即暂停请求。
+  - 用户可随时输入 `/usage` 查看两个周期的已用、剩余次数及重置时间。
+  - 同一 Telegram ID 在同一 AstrBot 实例的所有 Telegram Bot 间共享额度。
+  - 支持后台 WebUI 配置每个用户的默认额度、白名单与自定义特殊用户额度。
+  - 支持在用量达到 50%、90% 及 100%（用尽）时向用户发送针对性通知。
+  - 用量耗尽后自动拦截大模型请求，避免过度消耗 Token。
+  - 配置页提供一次性开关，保存后可重置所有用户用量。
+version: 1.0.0
+author: xmlans
+repo: https://github.com/xmlans/astrbot_plugin_usage_limiter
+astrbot_version: ">=4.0.0"
+tags:
+  - utility
+  - usage
+  - rate-limit

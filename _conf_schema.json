@@ -1,0 +1,85 @@
+{
+  "enable": {
+    "description": "启用用量控制",
+    "type": "bool",
+    "hint": "是否开启用户对话用量限制功能",
+    "default": true
+  },
+  "default_weekly_limit": {
+    "description": "默认每周对话次数上限",
+    "type": "int",
+    "hint": "普通用户每周允许调用大模型的对话次数（设为 0 或 -1 表示不限制）",
+    "default": 200
+  },
+  "default_5h_limit": {
+    "description": "默认 5 小时对话次数上限",
+    "type": "int",
+    "hint": "每位用户从首次请求起 5 小时内最多使用的次数，默认 30；0 或负整数表示不限制该周期。",
+    "default": 30
+  },
+  "whitelist": {
+    "description": "白名单用户列表",
+    "type": "list",
+    "hint": "复制 /usage 的标识。Telegram 使用 telegram:123456，在同一 AstrBot 的所有 Telegram Bot 中通用；其他平台使用实例ID:用户ID。",
+    "default": []
+  },
+  "custom_limits": {
+    "description": "特殊用户每周自定义额度",
+    "type": "text",
+    "editor_mode": true,
+    "editor_language": "json",
+    "hint": "JSON 对象，例如 {\"telegram:123456\": 300}。无效值使用默认额度。Telegram 的额度跨 Bot 共享。兼容旧版字典配置。",
+    "default": "{}"
+  },
+  "custom_5h_limits": {
+    "description": "特殊用户 5 小时自定义额度",
+    "type": "text",
+    "editor_mode": true,
+    "editor_language": "json",
+    "hint": "JSON 对象，例如 {\"telegram:123456\": 50}。0 或负整数为不限制该周期，无效值使用默认额度。",
+    "default": "{}"
+  },
+  "telegram_platform_ids": {
+    "description": "旧 Telegram Bot 实例 ID（补充迁移）",
+    "type": "list",
+    "hint": "当前配置的 Telegram Bot 会自动识别。这里只需填写已经从 AstrBot 中删除的旧 Telegram 实例 ID，用于合并其旧用量；不要填写其他平台 ID。",
+    "default": []
+  },
+  "legacy_platform_id": {
+    "description": "旧数据所属平台实例 ID",
+    "type": "string",
+    "hint": "升级时填入 AstrBot 配置中的实际平台实例 ID（无需 URL 转义），使旧用量、裸 ID 白名单和自定义额度只迁移到此平台。未指定时保留旧记录，已有旧记录的用户暂停请求。",
+    "default": ""
+  },
+  "enable_50_notice": {
+    "description": "启用 50% 用量提醒",
+    "type": "bool",
+    "hint": "当用户用量达到 50% 时是否主动提醒",
+    "default": true
+  },
+  "enable_90_notice": {
+    "description": "启用 90% 用量预警",
+    "type": "bool",
+    "hint": "当用户用量达到 90% 时是否主动预警",
+    "default": true
+  },
+  "enable_100_notice": {
+    "description": "启用用尽提醒",
+    "type": "bool",
+    "hint": "当用户最后一次额度用尽时是否主动提示",
+    "default": true
+  },
+  "exhausted_msg": {
+    "description": "额度耗尽拦截提示语",
+    "type": "text",
+    "hint": "支持 {period}、{reset_time}、{five_hour_usage}、{weekly_usage}。兼容 {used}/{limit}（阻塞且结束最晚的周期），以及两个周期各自的 used/limit 变量。",
+    "default": "⚠️ {period}对话额度已用尽。\n5 小时：{five_hour_usage}；本周：{weekly_usage}。\n预计可再次使用：{reset_time}。\n请稍后再试或联系管理员提升额度。"
+  },
+  "reset_all_usage": {
+    "description": "重置所有用户用量（一次性）",
+    "type": "bool",
+    "hint": "开启后点击保存配置：清零所有用户的 5 小时和每周用量、提醒状态，保留白名单与自定义额度。执行后自动关闭；失败请先修复存储再重新开启。",
+    "obvious_hint": true,
+    "default": false
+  }
+}
